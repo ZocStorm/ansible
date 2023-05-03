@@ -1,0 +1,32 @@
+- hosts: all
+  become: yes
+  become_user: root
+  become_method: sudo
+  gather_facts: no
+
+  vars_prompt:
+   - name: "user"
+     prompt: "User logon name"
+     private: no
+
+   - name: "comment"
+     prompt: "User full name"
+     private: no
+
+   - name: "uid"
+     prompt: "User UUID"
+     private: no
+
+   - name: "togroups"
+     prompt: "User groups (comma separated)"
+     private: no
+
+  tasks:
+    - name: User add "{{ user }}"
+      user: name="{{ user }}" comment="{{ comment }}" uid="{{ uid }}" groups="{{ togroups }}"
+      notify:
+        - Chage added user
+
+  handlers:
+    - name: Chage added user
+      shell: chage -M 99999 "{{ user }}"
