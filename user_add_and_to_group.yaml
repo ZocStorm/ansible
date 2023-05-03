@@ -4,22 +4,22 @@
   become_method: sudo
   gather_facts: no
 
-  vars_prompt:
-   - name: "user"
-     prompt: "User logon name"
-     private: no
+#  vars_prompt:
+#   - name: "user"
+#     prompt: "User logon name"
+#     private: no
 
-   - name: "comment"
-     prompt: "User full name"
-     private: no
+#   - name: "comment"
+#     prompt: "User full name"
+#     private: no
 
-   - name: "uid"
-     prompt: "User UUID"
-     private: no
+#   - name: "uid"
+#     prompt: "User UUID"
+#     private: no
 
-   - name: "togroups"
-     prompt: "User groups (comma separated)"
-     private: no
+#   - name: "togroups"
+#     prompt: "User groups (comma separated)"
+#     private: no
 
   tasks:
     - name: User add "{{ user }}"
