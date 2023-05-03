@@ -5,5 +5,7 @@
   gather_facts: no
 
   tasks:
-   - name: cat file
-     command: cat /etc/sudoers
+   - name: sude file
+     command: grep -v '#' /etc/sudoers
+     register: out
+   - debug: var=out.stdout_lines
