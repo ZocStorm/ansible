@@ -6,6 +6,6 @@
 
   tasks:
    - name: sude file
-     command: grep -v '#' /etc/sudoers
+     command: egrep '^[^#]' /etc/sudoers
      register: out
    - debug: var=out.stdout_lines
